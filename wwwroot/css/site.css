@@ -1,0 +1,162 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.toolbar-container{
+  width: 100%;
+  background-color: white;
+  height: auto;
+  border-bottom: 1px grey solid;
+}
+.toolbar-container img{
+  height: 90px;
+  width: auto;
+}
+
+.tool-bar-padding-top{
+padding-top: 25px;
+}
+
+.toolbar-container .shopping-cart{
+  height: 32px;
+  width: 32px;
+}
+
+.landing-page-container{
+  width: 100%;
+}
+.landing-page-container img{
+  width: 100%;
+  height: 600px;
+  padding-top: 90px;
+}
+.service{
+  padding : 20px;
+}
+.service img{
+  width: 80%;
+  height: 250px;  
+}
+.service-title{
+  text-transform:uppercase;
+  font-size: 50;
+  word-spacing: 5px;
+}
+.service-support{
+  padding : 20px;
+}
+.service-support img{
+  width: 150px;
+  height: 150px;  
+  padding-bottom: 15px; 
+  padding : 20px; 
+}
+.product-list-container{
+  width: 100%;
+  background-color: #F6F7F7;
+  height: auto;
+  margin: 0;
+  padding: 20px;
+}
+.product-list-container dl{  
+  padding: 12px;
+}
+.product-list-container dt{  
+  line-height: 45px;
+  font-size: 20px;
+}
+.product-list-panel{
+  padding: 12px;
+  background-color: #EDEDED;
+}
+.product-container{
+  width: auto;
+  height: 310px;
+  padding:5px;
+  margin: 5px 25px;
+  align-items: center;
+}
+.product-container img{
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 50px;
+  background-color: white;
+}
+.product-container .description{
+  padding: 10px;
+}

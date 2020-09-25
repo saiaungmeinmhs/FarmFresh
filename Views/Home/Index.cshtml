@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;   
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/css/site.css" />
+
+@* Toolbar*@
+<div class="toolbar-container fixed-top">
+    <div class="row">
+    <div class="col-sm-2">
+        <img src="~/images/homePage/FarmFresh_Logo.png" class="col-sm-12">
+    </div>  
+    <div class="col-sm-10">
+        <div class="row tool-bar-padding-top">
+            <div class="col-sm-10" align="left">
+             <div class="input-group col-sm-6">
+                <input type="text" id="txtProductName" class="form-control" placeholder="Search for a product or brand" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append" id="btnSearch">
+                    <span class="input-group-text bg-primary"><i class="fa fa-search text-white" aria-hidden="true"></i></span>
+                </div>
+            </div>            
+         </div>   
+        <div class="col-sm-2">
+            <img src="~/images/homePage/Shopping_Cart.png" class="shopping-cart">
+        </div>  
+        </div>         
+    </div>  
+    </div>  
+</div>
+
+@* Landing page *@
+<div class="landing-page-container">
+    <img src="~/images/homePage/Banner_Photo.jpg">
+</div>
+
+@* Service *@
+<div class="row service">
+    <div class="col-sm-6">
+        <h1 class="service-title">Fresh Food for a fresher you</h1>
+        <br/>
+        <h4>Quality food, Quality life.</h4>
+    </div>
+    <div class="col-sm-6" align="center">
+        <img src="~/images/homePage/Side_image.png">
+    </div>
+</div>
+<div class="row service-support">
+    <div class="col-sm-4" align="center">
+        <img src="~/images/homePage/clock.png">
+        <h4>Online anywhere</h4>
+    </div>
+    <div class="col-sm-4" align="center">
+        <img src="~/images/homePage/delivery-truck.png">
+        <h4>Fast delivery</h4>
+    </div>
+    <div class="col-sm-4" align="center">
+        <img src="~/images/homePage/support.png">
+        <h4>24/7 support</h4>
+    </div>
+</div>
+<div class="product-list-container row">
+    <div class="col-sm-3">
+      <dl id="CategoryList">
+        @* <dt>On Sales!</dt>
+        <dt>New</dt>
+        <dt>Shop by Store</dt>
+        <dt>Fruit & Veg</dt>
+        <dt>Meat & Seafood</dt>
+        <dt>Dairy and Chilled</dt>
+        <dt>Bakery</dt>
+        <dt>Beverages</dt> *@
+      </dl>
+    </div>
+    <div id="divProductList" class="col-sm-9 product-list-panel row">
+      
+    </div>
+        <div class="col-sm-12" align="center"><br/>
+          <input type="button" class="btn btn-info" value="View more..." id="btnViewMore">
+        </div>
+    </div>
+</div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        var pageNo=1;
+        var categoryId=1;
+        $(document).ready(function () {
+            GetCategoryList();
+            GetProductList();
+            $("#btnViewMore").click(function(){
+                pageNo=pageNo+1;
+                GetProductList();
+            });
+            $("#btnSearch").click(function(){
+                $("#divProductList").empty();
+                GetProductList();
+            });
+        });
+
+     function GetProductList() {
+            
+            $.ajax({
+                url: '/api/Product/GetProductList/?PageNumber='+pageNo+'&PageSize=6&CategoryId='+categoryId+'&ProductName='+$("#txtProductName").val(),
+                type: "GET",
+                dataType: "JSON",
+                dataSrc: '',
+                success: function (items) {
+                    $.each(items, function (i, item) {
+                        totalCount=item.paginationCount;
+                        var str='<div class="product-container col-sm-3">';
+                            str+='<img src="'+item.productUrl+'">';
+                            str+='<div class="description">';
+                            str+='<h5>'+item.name+'</h5>';
+                            str+='<h6>'+item.unitName+'('+item.categoryName+')</h6>';
+                            str+='</div></div>';  
+                       $("#divProductList").append(str);
+                    });
+                    
+                }
+            });
+        }
+        function GetCategoryList() {
+            
+            $.ajax({
+                url: '/api/Product/GetCategoryList',
+                type: "GET",
+                dataType: "JSON",
+                dataSrc: '',
+                success: function (items) {
+                    $.each(items, function (i, item) {
+                        var str='<dt style="cursor:default" onclick="searchByCategory(this.id)" id="'+item.id+'">'+item.name+'</dt>';
+                       $("#CategoryList").append(str);
+                    });
+                    
+                }
+            });
+        }
+        function searchByCategory(id){
+            $("#divProductList").empty();
+            categoryId=id;
+            GetProductList();
+        }
+    </script>
+
+

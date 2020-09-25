@@ -1,0 +1,13 @@
+bin
+Migrations
+.vscode
+obj
+*.db
+.history
+Migrations/*
+Config
+Config/*
+.vs
+credentials.json
+logs
+logs/*
