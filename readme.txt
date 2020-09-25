@@ -21,3 +21,10 @@ API
 1) To test api I have used Swagger interface.
    You can go to https://localhost:5001/swagger.
 2) You can also test from Postman.
+
+
+Technology
+=====================
+1) I have used ASP.Net Core MVC 3.1 with Entity Framework (Code first database) for backend.
+2) I have used MVC view with Jquery and Ajax for fronted.
+3) I have used Swagger interface for API.
