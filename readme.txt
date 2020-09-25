@@ -1,6 +1,6 @@
 Github link
 ===================
-http://
+https://github.com/saiaungmeinmhs/FarmFresh.git
 
 Instruction
 ===================
