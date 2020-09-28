@@ -51,6 +51,10 @@ namespace FarmFresh.Repo
 
         public async Task<ResponseStatus> CreateProduct(CreateProductRequest request)
         {
+
+            //image file should store on file server (aws s3, google drive,...)
+            //because of time limitation, i will implement upload file server later
+
             var response=new ResponseStatus();
             var product=new Product(){
                 Name=request.Name,
@@ -68,6 +72,9 @@ namespace FarmFresh.Repo
 
         public async Task<ResponseStatus> UpdateProduct(UpdateProductRequest request)
         {
+            //image file should store on file server (aws s3, google drive,...)
+            //because of time limitation, i will implement upload file server later
+            
             var response=new ResponseStatus();
             var product=await _context.Product.Where(x=>x.Id==request.Id).SingleOrDefaultAsync();
             if(product!=null)
